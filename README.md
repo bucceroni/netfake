@@ -2,13 +2,11 @@
   * Desafio: Gama Academy XP14
   * Base: https://github.com/yuchiu/Netflix-clone
 
-* Criar projeto
-  * Terminal
-  ```create-react-app my-app```
-
 * Iniciar projeto
   * Terminal
   ```
+  create-react-app my-app
+  ...
   cd my-app
   npm start
   ```
