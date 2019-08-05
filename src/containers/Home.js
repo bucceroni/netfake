@@ -17,6 +17,21 @@ class Home extends Component {
     actions.cleanMovieCast();
   }
 
+  handleInputChange = e => {
+    const movies = document.querySelectorAll(".col");
+
+    if (e.target.value.length > 0) {
+      movies.forEach(movie => {
+        let movieTitle = movie.querySelector(".search-tile-title").textContent;
+        let expressao = new RegExp(e.target.value, "i");
+
+        if (!expressao.test(movieTitle)) movie.classList.add("hide");
+        else movie.classList.remove("hide");
+      });
+    } else {
+      movies.forEach(movie => movie.classList.remove("hide"));
+    }
+  };
   handleTitle = title => {
     if (title.length < 20) {
       return <h5 className="search-tile-title">{title}</h5>;
@@ -51,6 +66,21 @@ class Home extends Component {
       <div className="container">
         <h1 className="display-4">NetFake</h1>
         <h1 className="display-6">Upcoming</h1>
+        <div className="row  ">
+          <div className="col-md-3">
+            <div className="form-group">
+              <label htmlFor="search">Pesquisar</label>
+              <input
+                type="text"
+                className="form-control"
+                id="search"
+                aria-describedby="search"
+                placeholder="Buscar filme"
+                onChange={this.handleInputChange}
+              />
+            </div>
+          </div>
+        </div>
         <div className="row align-items-start">
           {upcoming.map((item, index) => {
             return (
